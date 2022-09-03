@@ -43,6 +43,8 @@ namespace UserControlsTest
             this.userControlListBox = new VisualComponents.UserControlListBox();
             this.userControlTextBox = new VisualComponents.UserControlTextBox();
             this.userControlComboBox1 = new VisualComponents.UserControlComboBox();
+            this.buttonSetComboBoxItem = new System.Windows.Forms.Button();
+            this.textBoxForComboBoxItem = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -50,7 +52,7 @@ namespace UserControlsTest
             // 
             // buttonClearComboBox
             // 
-            this.buttonClearComboBox.Location = new System.Drawing.Point(44, 90);
+            this.buttonClearComboBox.Location = new System.Drawing.Point(12, 122);
             this.buttonClearComboBox.Name = "buttonClearComboBox";
             this.buttonClearComboBox.Size = new System.Drawing.Size(103, 23);
             this.buttonClearComboBox.TabIndex = 2;
@@ -80,7 +82,7 @@ namespace UserControlsTest
             // labelComboBox
             // 
             this.labelComboBox.AutoSize = true;
-            this.labelComboBox.Location = new System.Drawing.Point(176, 128);
+            this.labelComboBox.Location = new System.Drawing.Point(127, 82);
             this.labelComboBox.Name = "labelComboBox";
             this.labelComboBox.Size = new System.Drawing.Size(46, 17);
             this.labelComboBox.TabIndex = 6;
@@ -88,7 +90,7 @@ namespace UserControlsTest
             // 
             // buttonGetFromComboBox
             // 
-            this.buttonGetFromComboBox.Location = new System.Drawing.Point(179, 90);
+            this.buttonGetFromComboBox.Location = new System.Drawing.Point(12, 79);
             this.buttonGetFromComboBox.Name = "buttonGetFromComboBox";
             this.buttonGetFromComboBox.Size = new System.Drawing.Size(94, 23);
             this.buttonGetFromComboBox.TabIndex = 5;
@@ -118,6 +120,8 @@ namespace UserControlsTest
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.textBoxForComboBoxItem);
+            this.panel2.Controls.Add(this.buttonSetComboBoxItem);
             this.panel2.Controls.Add(this.labelComboBox);
             this.panel2.Controls.Add(this.labelEvents);
             this.panel2.Controls.Add(this.buttonClearComboBox);
@@ -182,6 +186,23 @@ namespace UserControlsTest
             this.userControlComboBox1.Size = new System.Drawing.Size(154, 53);
             this.userControlComboBox1.TabIndex = 7;
             // 
+            // buttonSetComboBoxItem
+            // 
+            this.buttonSetComboBoxItem.Location = new System.Drawing.Point(223, 122);
+            this.buttonSetComboBoxItem.Name = "buttonSetComboBoxItem";
+            this.buttonSetComboBoxItem.Size = new System.Drawing.Size(94, 23);
+            this.buttonSetComboBoxItem.TabIndex = 8;
+            this.buttonSetComboBoxItem.Text = "Установить";
+            this.buttonSetComboBoxItem.UseVisualStyleBackColor = true;
+            this.buttonSetComboBoxItem.Click += new System.EventHandler(this.buttonSetComboBoxItem_Click);
+            // 
+            // textBoxForComboBoxItem
+            // 
+            this.textBoxForComboBoxItem.Location = new System.Drawing.Point(223, 82);
+            this.textBoxForComboBoxItem.Name = "textBoxForComboBoxItem";
+            this.textBoxForComboBoxItem.Size = new System.Drawing.Size(100, 22);
+            this.textBoxForComboBoxItem.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -218,6 +239,8 @@ namespace UserControlsTest
         private VisualComponents.UserControlComboBox userControlComboBox1;
         private System.Windows.Forms.Label labelForTextBox;
         private System.Windows.Forms.Button buttonGetFromTextBox;
+        private System.Windows.Forms.TextBox textBoxForComboBoxItem;
+        private System.Windows.Forms.Button buttonSetComboBoxItem;
     }
 }
 

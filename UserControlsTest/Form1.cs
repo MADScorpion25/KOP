@@ -55,5 +55,13 @@ namespace UserControlsTest
                 labelForTextBox.Text = ex.Message;
             }
         }
+
+        private void buttonSetComboBoxItem_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(textBoxForComboBoxItem.Text))
+            {
+                userControlComboBox1.SelectedValue = textBoxForComboBoxItem.Text;
+            }
+        }
     }
 }
