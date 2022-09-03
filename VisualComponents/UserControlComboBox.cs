@@ -15,7 +15,13 @@ namespace VisualComponents
         public string SelectedValue
         {
             get => comboBox.SelectedItem != null ? comboBox.SelectedItem.ToString() : string.Empty;
-            set => comboBox.SelectedItem = value;
+            set
+            {
+                if (comboBox.Items.Contains(value))
+                {
+                    comboBox.SelectedItem = value;
+                }
+            }
         }
 
         private event EventHandler _selectdItemChange;
