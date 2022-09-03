@@ -25,7 +25,7 @@ namespace VisualComponents
 
         public string Content
         {
-            get => Regex.IsMatch(Content, Pattern.ToString()) ? textBox.Text : throw new Exception("String is not match regex pattern");
+            get => Regex.IsMatch(textBox.Text, Pattern.ToString()) ? textBox.Text : throw new Exception("String is not match regex pattern");
             set => textBox.Text = value;
         }
 
@@ -38,9 +38,9 @@ namespace VisualComponents
             };
         }
 
-        public void setToolTip(string text)
+        public void SetToolTip(string text)
         {
-            new ToolTip().Show(text, textBox);
+            new ToolTip().SetToolTip(textBox, text);
         }
 
     }

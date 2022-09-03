@@ -38,7 +38,7 @@ namespace VisualComponents
             this.listBox.ItemHeight = 16;
             this.listBox.Location = new System.Drawing.Point(3, 3);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(281, 164);
+            this.listBox.Size = new System.Drawing.Size(362, 212);
             this.listBox.TabIndex = 0;
             // 
             // UserControlListBox
@@ -47,7 +47,7 @@ namespace VisualComponents
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.listBox);
             this.Name = "UserControlListBox";
-            this.Size = new System.Drawing.Size(287, 180);
+            this.Size = new System.Drawing.Size(368, 234);
             this.ResumeLayout(false);
 
         }

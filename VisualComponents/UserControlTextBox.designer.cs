@@ -34,7 +34,7 @@ namespace VisualComponents
             // 
             // textBox
             // 
-            this.textBox.Location = new System.Drawing.Point(15, 63);
+            this.textBox.Location = new System.Drawing.Point(12, 15);
             this.textBox.Name = "textBox";
             this.textBox.Size = new System.Drawing.Size(191, 22);
             this.textBox.TabIndex = 0;
@@ -45,7 +45,7 @@ namespace VisualComponents
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBox);
             this.Name = "UserControlTextBox";
-            this.Size = new System.Drawing.Size(219, 150);
+            this.Size = new System.Drawing.Size(219, 53);
             this.ResumeLayout(false);
             this.PerformLayout();
 

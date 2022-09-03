@@ -14,7 +14,7 @@ namespace VisualComponents
     {
         private string layout;
         private char beginSeparator, endSeparator;
-        private List<string> fieldsPlaces;
+        private List<string> fieldNames;
         public int SelectedRowIndex
         {
             get => listBox.SelectedIndex;
@@ -28,7 +28,7 @@ namespace VisualComponents
         public UserControlListBox()
         {
             InitializeComponent();
-            fieldsPlaces = new List<string>();
+            fieldNames = new List<string>();
         }
         public void SetVisualLayout(string layout, char beginSeparator, char endSeparator)
         {
@@ -40,7 +40,7 @@ namespace VisualComponents
                 string[] endSeparate = subStr.Split(endSeparator);
                 if(endSeparate.Length == 2)
                 {
-                    fieldsPlaces.Add(endSeparate[0]);
+                    fieldNames.Add(endSeparate[0]);
                 }
             }
         }
@@ -49,7 +49,7 @@ namespace VisualComponents
         {
             foreach(T obj in list){
                 string rowString = layout;
-                foreach(string fieldName in fieldsPlaces)
+                foreach(string fieldName in fieldNames)
                 {
                     Type myType = typeof(T);
                     var field = myType.GetProperty(fieldName);
@@ -64,12 +64,12 @@ namespace VisualComponents
 
         public T GetSelectedObject<T>() where T : class, new()
         {
-            if (fieldsPlaces.Count == 0 || SelectedRowIndex <= -1 || SelectedRowIndex >= listBox.Items.Count) return null;
+            if (fieldNames.Count == 0 || SelectedRowIndex <= -1 || SelectedRowIndex >= listBox.Items.Count) return null;
             T obj = Activator.CreateInstance<T>();
             List<string> otherTemplateText = new List<string>();
             string nextSeparated = layout;
 
-            foreach(string field in fieldsPlaces)
+            foreach(string field in fieldNames)
             {
                 string separator = beginSeparator + field + endSeparator;
                 string[] separateRes = nextSeparated.Split(new string[] { separator }, StringSplitOptions.None);
@@ -84,7 +84,7 @@ namespace VisualComponents
             for(int i = 0; i < fieldValues.Length; i++)
             {
                 Type myType = typeof(T);
-                var field = myType.GetProperty(fieldsPlaces.ElementAt(i));
+                var field = myType.GetProperty(fieldNames.ElementAt(i));
                 Type propertyType = field.PropertyType;
                 field.SetValue(obj, Convert.ChangeType(fieldValues.ElementAt(i), propertyType));
             }
