@@ -24,27 +24,21 @@ namespace VisualComponents
             }
         }
 
-        private event EventHandler _selectdItemChange;
+        private event EventHandler _selectedItemChange;
 
         public event EventHandler SetChangeItemEvent
         {
-            add { _selectdItemChange += value; }
-            remove { _selectdItemChange -= value; }
+            add { _selectedItemChange += value; }
+            remove { _selectedItemChange -= value; }
         }
 
         public UserControlComboBox()
         {
             InitializeComponent();
-            SetChangeItemEvent += SelectedItemChange;
             comboBox.SelectedIndexChanged += (sender, e) =>
             {
-                _selectdItemChange?.Invoke(sender, e);
+                _selectedItemChange?.Invoke(sender, e);
             };
-        }
-
-        private void SelectedItemChange(object sender, EventArgs e)
-        {
-            SelectedValue = comboBox.SelectedItem?.ToString();
         }
 
         public void InsertData(List<string> list)
