@@ -26,7 +26,13 @@ namespace VisualComponents
         public string Content
         {
             get => Regex.IsMatch(textBox.Text, Pattern.ToString()) ? textBox.Text : throw new Exception("String is not match regex pattern");
-            set => textBox.Text = value;
+            set
+            {
+                if (Pattern != null && Regex.IsMatch(textBox.Text, Pattern.ToString()))
+                {
+                    textBox.Text = value;
+                }
+            }
         }
 
         public UserControlTextBox()
