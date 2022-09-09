@@ -47,7 +47,7 @@ namespace VisualComponents
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.listBox);
             this.Name = "UserControlListBox";
-            this.Size = new System.Drawing.Size(368, 234);
+            this.Size = new System.Drawing.Size(368, 221);
             this.ResumeLayout(false);
 
         }

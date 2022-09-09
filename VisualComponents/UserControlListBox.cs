@@ -76,9 +76,9 @@ namespace VisualComponents
                 otherTemplateText.Add(separateRes[0]);
                 nextSeparated = separateRes[1];
             }
+            
             if(!string.IsNullOrEmpty(nextSeparated))
             otherTemplateText.Add(nextSeparated);
-
             string[] fieldValues = listBox.SelectedItem.ToString().Split(otherTemplateText.ToArray(), StringSplitOptions.RemoveEmptyEntries);
 
             for(int i = 0; i < fieldValues.Length; i++)
