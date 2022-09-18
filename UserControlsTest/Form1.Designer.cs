@@ -40,11 +40,11 @@ namespace UserControlsTest
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonGetFromTextBox = new System.Windows.Forms.Button();
             this.labelForTextBox = new System.Windows.Forms.Label();
+            this.buttonSetComboBoxItem = new System.Windows.Forms.Button();
+            this.textBoxForComboBoxItem = new System.Windows.Forms.TextBox();
             this.userControlListBox = new VisualComponents.UserControlListBox();
             this.userControlTextBox = new VisualComponents.UserControlTextBox();
             this.userControlComboBox1 = new VisualComponents.UserControlComboBox();
-            this.buttonSetComboBoxItem = new System.Windows.Forms.Button();
-            this.textBoxForComboBoxItem = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -162,30 +162,6 @@ namespace UserControlsTest
             this.labelForTextBox.TabIndex = 8;
             this.labelForTextBox.Text = "label1";
             // 
-            // userControlListBox
-            // 
-            this.userControlListBox.Location = new System.Drawing.Point(24, 45);
-            this.userControlListBox.Name = "userControlListBox";
-            this.userControlListBox.SelectedRowIndex = -1;
-            this.userControlListBox.Size = new System.Drawing.Size(373, 225);
-            this.userControlListBox.TabIndex = 1;
-            // 
-            // userControlTextBox
-            // 
-            this.userControlTextBox.Location = new System.Drawing.Point(54, 71);
-            this.userControlTextBox.Name = "userControlTextBox";
-            this.userControlTextBox.Pattern = null;
-            this.userControlTextBox.Size = new System.Drawing.Size(219, 59);
-            this.userControlTextBox.TabIndex = 8;
-            // 
-            // userControlComboBox1
-            // 
-            this.userControlComboBox1.Location = new System.Drawing.Point(44, 11);
-            this.userControlComboBox1.Name = "userControlComboBox1";
-            this.userControlComboBox1.SelectedValue = "";
-            this.userControlComboBox1.Size = new System.Drawing.Size(154, 53);
-            this.userControlComboBox1.TabIndex = 7;
-            // 
             // buttonSetComboBoxItem
             // 
             this.buttonSetComboBoxItem.Location = new System.Drawing.Point(223, 122);
@@ -202,6 +178,30 @@ namespace UserControlsTest
             this.textBoxForComboBoxItem.Name = "textBoxForComboBoxItem";
             this.textBoxForComboBoxItem.Size = new System.Drawing.Size(100, 22);
             this.textBoxForComboBoxItem.TabIndex = 9;
+            // 
+            // userControlListBox
+            // 
+            this.userControlListBox.Location = new System.Drawing.Point(24, 45);
+            this.userControlListBox.Name = "userControlListBox";
+            this.userControlListBox.SelectedRowIndex = -1;
+            this.userControlListBox.Size = new System.Drawing.Size(371, 225);
+            this.userControlListBox.TabIndex = 1;
+            // 
+            // userControlTextBox
+            // 
+            this.userControlTextBox.Location = new System.Drawing.Point(54, 71);
+            this.userControlTextBox.Name = "userControlTextBox";
+            this.userControlTextBox.Pattern = null;
+            this.userControlTextBox.Size = new System.Drawing.Size(198, 30);
+            this.userControlTextBox.TabIndex = 8;
+            // 
+            // userControlComboBox1
+            // 
+            this.userControlComboBox1.Location = new System.Drawing.Point(44, 11);
+            this.userControlComboBox1.Name = "userControlComboBox1";
+            this.userControlComboBox1.SelectedValue = "";
+            this.userControlComboBox1.Size = new System.Drawing.Size(129, 34);
+            this.userControlComboBox1.TabIndex = 7;
             // 
             // Form1
             // 

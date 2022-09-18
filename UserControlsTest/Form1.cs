@@ -18,7 +18,7 @@ namespace UserControlsTest
             InitializeComponent();
             userControlComboBox1.InsertData(new List<string>() { "Значение 1", "Значение 2", "Значение 3", "Значение 4", "Значение 5" });
             userControlListBox.SetVisualLayout("Машина марки {Brand}, {ProductionYear} года выпуска", '{', '}');
-            userControlListBox.SetListData(new List<Car>() { new Car("Lada", 2018), new Car("Volswagen", 2010), new Car("Volvo", 2020) });
+            userControlListBox.SetListData(new List<Car>() { new Car("Lada", 2018), new Car("Volkswagen", 2010), new Car("Volvo", 2020) });
             userControlComboBox1.SetChangeItemEvent += incrementLabelEvents;
             userControlTextBox.SetToolTip("example@gmail.com");
             userControlTextBox.SetChangeValueEvent += incrementLabelEvents;
