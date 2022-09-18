@@ -32,6 +32,10 @@ namespace VisualComponents
                 {
                     textBox.Text = value;
                 }
+                else
+                {
+                    throw new Exception("String is not match regex pattern or pattern is empty");
+                }
             }
         }
 
