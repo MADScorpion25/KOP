@@ -8,9 +8,9 @@ namespace UnvisualComponents
 {
     public class TableDocument<T>
     {
-        public void CreateTableDocument(string path, string title, List<CellInfo> cellsOrHorizintalMergeInfo, int[] columnWidth, string[] dataColumnsPropertiesPattern, T[] objectsData)
+        public void CreateTableDocument(string path, string title, List<CellInfo> cellsOrHorozintalMergeInfo, int[] columnWidth, string[] dataColumnsPropertiesPattern, T[] objectsData)
         {
-            if(string.IsNullOrEmpty(path) || string.IsNullOrEmpty(title) || cellsOrHorizintalMergeInfo.Count < 1 || columnWidth.Length < 1 || dataColumnsPropertiesPattern.Length < 1 || objectsData.Length < 1 
+            if(string.IsNullOrEmpty(path) || string.IsNullOrEmpty(title) || cellsOrHorozintalMergeInfo.Count < 1 || columnWidth.Length < 1 || dataColumnsPropertiesPattern.Length < 1 || objectsData.Length < 1 
                 || columnWidth.Length != dataColumnsPropertiesPattern.Length || dataColumnsPropertiesPattern.Length != objectsData.Length)
             {
                 throw new Exception("Некорректные или пустые данные");
@@ -27,7 +27,7 @@ namespace UnvisualComponents
               
 
                 HashSet<int> mergedHorizontal = new HashSet<int>();
-                foreach(var pair in cellsOrHorizintalMergeInfo)
+                foreach(var pair in cellsOrHorozintalMergeInfo)
                 {
                     if(pair.HorizontalMerged)
                     {
@@ -38,9 +38,9 @@ namespace UnvisualComponents
                     }
                 }
 
-                FindVerticalMergeOrSimple(table, cellsOrHorizintalMergeInfo, columnWidth, mergedHorizontal);
+                FindVerticalMergeOrSimple(table, cellsOrHorozintalMergeInfo, columnWidth, mergedHorizontal);
 
-                MergeHorizontal(table, cellsOrHorizintalMergeInfo, columnWidth);
+                MergeHorizontal(table, cellsOrHorozintalMergeInfo, columnWidth);
 
                 AddTableData(table, objectsData, dataColumnsPropertiesPattern);
 

@@ -19,7 +19,7 @@ namespace Test
 
             TableDocument<Car> tableDocument = new TableDocument<Car>();
             List<CellInfo> keyValues = new List<CellInfo>();
-            keyValues.Add(new CellInfo("NameInfo", 0, 2));
+            keyValues.Add(new CellInfo("NameInfo", 1, 2));
             keyValues.Add(new CellInfo("ProductionYear", 3));
             keyValues.Add(new CellInfo("Brand", 4));
             keyValues.Add(new CellInfo("Model", 5));
@@ -27,15 +27,15 @@ namespace Test
 
             new LinearChartDocument().CreateWordChart(@"C:\Users\admal\OneDrive\Рабочий стол\HomeWork\testChart.docx", "title", LegendLocation.Bottom, new List<List<ChartData>>() {
                 new List<ChartData>() { 
-                    new ChartData(){name = "s1", value = 4},
-                    new ChartData(){name = "s2", value = 5},
-                    new ChartData(){name = "s3", value = 7},
-                    new ChartData(){name = "s4", value = 9}},
+                    new ChartData(){Name = "s1", Value = 4},
+                    new ChartData(){Name = "s2", Value = 5},
+                    new ChartData(){Name = "s3", Value = 7},
+                    new ChartData(){Name = "s4", Value = 9}},
                 new List<ChartData>(){
-                    new ChartData(){name = "r1", value = 2},
-                    new ChartData(){name = "r2", value = 9},
-                    new ChartData(){name = "r3", value = 3},
-                    new ChartData(){name = "r4", value = 6}}}, 
+                    new ChartData(){Name = "r1", Value = 2},
+                    new ChartData(){Name = "r2", Value = 9},
+                    new ChartData(){Name = "r3", Value = 3},
+                    new ChartData(){Name = "r4", Value = 6}}}, 
                 new List<string>() { "first", "second" });
         }
     }

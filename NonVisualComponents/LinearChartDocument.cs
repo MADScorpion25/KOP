@@ -38,7 +38,7 @@ namespace UnvisualComponents
                 for (int i = 0; i < seriesName.Count; i++)
                 {
                     Series series = new Series(seriesName.ToArray()[i]);
-                    series.Bind(data.ToArray()[i], "name", "value");
+                    series.Bind(data.ToArray()[i], "Name", "Value");
                     lineChart.AddSeries(series);
                 }
      
