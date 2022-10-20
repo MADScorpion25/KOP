@@ -14,7 +14,7 @@ namespace InternetShopDatabaseImplement.models
         public string ProductDescription { get; set; }
         [Required]
         public string OrderStatus { get; set; }
-        public int? OrderSum { get; set; }
+        public string OrderSum { get; set; }
 
     }
 }

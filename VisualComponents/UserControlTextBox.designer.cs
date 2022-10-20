@@ -34,9 +34,10 @@ namespace VisualComponents
             // 
             // textBox
             // 
-            this.textBox.Location = new System.Drawing.Point(3, 3);
+            this.textBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox.Location = new System.Drawing.Point(0, 0);
             this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(191, 22);
+            this.textBox.Size = new System.Drawing.Size(197, 22);
             this.textBox.TabIndex = 0;
             // 
             // UserControlTextBox
@@ -45,7 +46,7 @@ namespace VisualComponents
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.textBox);
             this.Name = "UserControlTextBox";
-            this.Size = new System.Drawing.Size(197, 29);
+            this.Size = new System.Drawing.Size(197, 25);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -32,7 +32,7 @@ namespace InternetShopDatabaseImplement.implements
             {
                 return null;
             }
-            using var context = new InternetShopDatabase();
+            var context = new InternetShopDatabase();
             var order = context.Orders
                 .ToList()
                 .FirstOrDefault(rec => rec.Id == model.Id);
@@ -41,12 +41,17 @@ namespace InternetShopDatabaseImplement.implements
 
         public List<OrderViewModel> GetFilteredList(OrderBindingModel model)
         {
-            throw new NotImplementedException();
+            var context = new InternetShopDatabase();
+            return context.Orders
+                .Where(order => order.OrderSum.Equals("оплачен скидками"))
+                .ToList()
+                .Select(CreateModel)
+                .ToList();
         }
 
         public List<OrderViewModel> GetFullList()
         {
-            using var context = new InternetShopDatabase();
+            var context = new InternetShopDatabase();
             return context.Orders
                 .ToList()
                 .Select(CreateModel)

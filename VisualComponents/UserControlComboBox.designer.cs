@@ -34,10 +34,11 @@ namespace VisualComponents
             // 
             // comboBox
             // 
+            this.comboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.comboBox.FormattingEnabled = true;
-            this.comboBox.Location = new System.Drawing.Point(3, 3);
+            this.comboBox.Location = new System.Drawing.Point(0, 0);
             this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(121, 24);
+            this.comboBox.Size = new System.Drawing.Size(172, 24);
             this.comboBox.TabIndex = 0;
             // 
             // UserControlComboBox
@@ -46,7 +47,7 @@ namespace VisualComponents
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.comboBox);
             this.Name = "UserControlComboBox";
-            this.Size = new System.Drawing.Size(127, 31);
+            this.Size = new System.Drawing.Size(172, 26);
             this.ResumeLayout(false);
 
         }

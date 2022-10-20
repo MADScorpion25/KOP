@@ -5,18 +5,19 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BEB3A589-1B82-4B8E-B7A8-F5BA5A68DF77}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>InternetShopDatabaseImplement</RootNamespace>
-    <AssemblyName>InternetShopDatabaseImplement</AssemblyName>
+    <ProjectGuid>{F02F29AD-E35E-4268-8C1C-C7C3C0228BE0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>InternetShopApp</RootNamespace>
+    <AssemblyName>InternetShopApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -26,6 +27,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,6 +36,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="1st_lab_kop">
+      <HintPath>ChashinComponents\1st_lab_kop.dll</HintPath>
+    </Reference>
+    <Reference Include="2nd_lab_kop">
+      <HintPath>ChashinComponents\2nd_lab_kop.dll</HintPath>
+    </Reference>
+    <Reference Include="ControlLibrary">
+      <HintPath>KondrashinComponents\ControlLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -85,11 +96,23 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=3.1.29.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Extensions.Primitives.3.1.29\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
-    <Reference Include="Npgsql, Version=4.1.9.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <HintPath>packages\Npgsql.4.1.9\lib\net461\Npgsql.dll</HintPath>
+    <Reference Include="MigraDoc.DocumentObjectModel-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\MigraDoc.DocumentObjectModel-gdi.dll</HintPath>
     </Reference>
-    <Reference Include="Npgsql.EntityFrameworkCore.PostgreSQL, Version=3.1.18.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
-      <HintPath>packages\Npgsql.EntityFrameworkCore.PostgreSQL.3.1.18\lib\netstandard2.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll</HintPath>
+    <Reference Include="MigraDoc.Rendering-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\MigraDoc.Rendering-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\MigraDoc.RtfRendering-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="NonVisualComponentLibriary">
+      <HintPath>KondrashinComponents\NonVisualComponentLibriary.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\PdfSharp-gdi.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting-gdi, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>packages\PDFsharp-MigraDoc-gdi.1.50.5147\lib\net20\PdfSharp.Charting-gdi.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -116,48 +139,108 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-    <Reference Include="System.Text.Encodings.Web, Version=4.0.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Text.Encodings.Web.4.6.0\lib\netstandard2.0\System.Text.Encodings.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Json, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.Text.Json.4.6.0\lib\net461\System.Text.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="VisualControlsChashin">
+      <HintPath>..\..\VisualControlsChashin\bin\Debug\VisualControlsChashin.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Implements\OrderStatusStorage.cs" />
-    <Compile Include="Implements\OrderStorage.cs" />
-    <Compile Include="InternetShopDatabase.cs" />
-    <Compile Include="Migrations\20221020192433_InitialCreate.cs" />
-    <Compile Include="Migrations\20221020192433_InitialCreate.designer.cs">
-      <DependentUpon>20221020192433_InitialCreate.cs</DependentUpon>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Migrations\InternetShopDatabaseModelSnapshot.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\OrderStatus.cs" />
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="plugins\AppPluginConvension.cs" />
+    <Compile Include="plugins\FormOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="plugins\FormOrder.Designer.cs">
+      <DependentUpon>FormOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="plugins\FormOrderStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="plugins\FormOrderStatus.Designer.cs">
+      <DependentUpon>FormOrderStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="plugins\OrderConvensionElement.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="plugins\FormOrder.resx">
+      <DependentUpon>FormOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="plugins\FormOrderStatus.resx">
+      <DependentUpon>FormOrderStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NonVisualCompAddition\NonVisualCompAddition.csproj">
+      <Project>{97fe1b18-97b9-4557-b238-ea0999ff8c41}</Project>
+      <Name>NonVisualCompAddition</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\InternetShopBusinessLogic\InternetShopBusinessLogic.csproj">
+      <Project>{3b7a7694-3cf8-458d-8856-29bf26bf3c33}</Project>
+      <Name>InternetShopBusinessLogic</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InternetShopContracts\InternetShopContracts.csproj">
       <Project>{02eefd24-baea-45c1-a0aa-16d58f9bbef4}</Project>
       <Name>InternetShopContracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\InternetShopDatabaseImplement\InternetShopDatabaseImplement.csproj">
+      <Project>{beb3a589-1b82-4b8e-b7a8-f5ba5a68df77}</Project>
+      <Name>InternetShopDatabaseImplement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NonVisualComponents\NonVisualComponents.csproj">
+      <Project>{100c5285-e5ae-44ad-b59b-57b6712a893e}</Project>
+      <Name>NonVisualComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PluginsConventionLibrary\PluginsConventionLibrary.csproj">
+      <Project>{e8031c62-6774-41d6-8e9e-2023a52cbe7a}</Project>
+      <Name>PluginsConventionLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VisualComponents\VisualComponents.csproj">
+      <Project>{CFF70173-6AD3-4CE7-9E77-E56927AE76BC}</Project>
+      <Name>VisualComponents</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

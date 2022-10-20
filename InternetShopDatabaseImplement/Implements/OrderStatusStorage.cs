@@ -9,7 +9,7 @@ using System.Text;
 
 namespace InternetShopDatabaseImplement.implements
 {
-    public class OrderStatusestatusStorage : IOrderStatusStorage
+    public class OrderStatusStorage : IOrderStatusStorage
     {
         public void Delete(OrderStatusBindingModel model)
         {
@@ -32,7 +32,7 @@ namespace InternetShopDatabaseImplement.implements
             {
                 return null;
             }
-            using var context = new InternetShopDatabase();
+            var context = new InternetShopDatabase();
             var orderStatus = context.OrderStatuses
                 .ToList()
                 .FirstOrDefault(rec => rec.Id == model.Id);
@@ -46,7 +46,7 @@ namespace InternetShopDatabaseImplement.implements
 
         public List<OrderStatusViewModel> GetFullList()
         {
-            using var context = new InternetShopDatabase();
+            var context = new InternetShopDatabase();
             return context.OrderStatuses
                 .ToList()
                 .Select(CreateModel)

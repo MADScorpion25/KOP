@@ -11,12 +11,12 @@ namespace InternetShopDatabaseImplement.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    CustomerFIO = table.Column<string>(type: "text", nullable: false),
-                    ProductDescription = table.Column<string>(type: "text", nullable: false),
-                    OrderStatus = table.Column<string>(type: "text", nullable: false),
-                    OrderSum = table.Column<int>(type: "integer", nullable: true)
+                    CustomerFIO = table.Column<string>(nullable: false),
+                    ProductDescription = table.Column<string>(nullable: false),
+                    OrderStatus = table.Column<string>(nullable: false),
+                    OrderSum = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -27,9 +27,9 @@ namespace InternetShopDatabaseImplement.Migrations
                 name: "OrderStatuses",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Status = table.Column<string>(type: "text", nullable: false)
+                    Status = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

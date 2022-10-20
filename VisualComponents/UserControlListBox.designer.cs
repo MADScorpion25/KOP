@@ -34,11 +34,12 @@ namespace VisualComponents
             // 
             // listBox
             // 
+            this.listBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listBox.FormattingEnabled = true;
             this.listBox.ItemHeight = 16;
-            this.listBox.Location = new System.Drawing.Point(3, 3);
+            this.listBox.Location = new System.Drawing.Point(0, 0);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(362, 212);
+            this.listBox.Size = new System.Drawing.Size(368, 221);
             this.listBox.TabIndex = 0;
             // 
             // UserControlListBox

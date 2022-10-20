@@ -2,11 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace InternetShopDatabaseImplement
 {
-    public class InternetShopDatabase : DbContext
+    class InternetShopDatabase : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
