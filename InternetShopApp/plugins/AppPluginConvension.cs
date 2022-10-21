@@ -1,31 +1,25 @@
-﻿using ControlLibrary;
-using InternetShopBusinessLogic.BusinessLogic;
-using PluginsConventionLibrary.plugins;
-using InternetShopDatabaseImplement.implements;
+﻿using PluginsConventionLibrary.plugins;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using InternetShopContracts.BindingModels;
-using NonVisualComponents;
 using UnvisualComponents;
 using NonVisualCompAddition;
+using InternetShopContracts.BusinessLogicsContracts;
+using Unity;
+using ControlLibrary;
 
 namespace InternetShopApp.plugins
 {
     class AppPluginConvension : IPluginsConvention
     {
-        private TreeViewControl treeViewControl;
-        private OrderLogic orderLogic;
-        private OrderStorage orderStorage;
-        private OrderStatusLogic orderStatusLogic;
-        private OrderStatusStorage orderStatusStorage;
-        public AppPluginConvension()
+        private TreeViewControl treeViewControl = new TreeViewControl(new List<string> { "OrderStatus", "OrderSum", "Id", "CustomerFIO" });
+        private readonly IOrderLogic orderLogic;
+        private readonly IOrderStatusLogic orderStatusLogic;
+        public AppPluginConvension(IOrderLogic orderLogic, IOrderStatusLogic orderStatusLogic)
         {
-            treeViewControl = new TreeViewControl(new List<string> { "OrderStatus", "OrderSum", "Id", "CustomerFIO" });
-            orderStorage = new OrderStorage();
-            orderStatusStorage = new OrderStatusStorage();
-            orderLogic = new OrderLogic(orderStorage);
-            orderStatusLogic = new OrderStatusLogic(new OrderStatusStorage());
+            this.orderLogic = orderLogic;
+            this.orderStatusLogic = orderStatusLogic;
         }
         public string PluginName => "Orders";
 
@@ -85,7 +79,7 @@ namespace InternetShopApp.plugins
             {
                 var data = orderLogic.Read(null);
                 SavePdfWithHeaders pdfTableDoc = new SavePdfWithHeaders();
-                pdfTableDoc.CreatePdf(saveDocument.FileName, "Информация по заказам", new List<string> { "2cm", "4cm", "4cm", "4cm" }, new List<string> { "1cm", "1cm", "1cm", "1cm" },
+                pdfTableDoc.CreatePdf(saveDocument.FileName, "Информация по заказам", new List<string> { "2cm", "4cm", "4cm", "4cm" }, new List<string> { "1cm", "1cm", "1cm", "1cm", "1cm" },
                     new List<Tuple<string, string>>
                     {
                     new Tuple<string, string>("ID", "Id"),
@@ -117,7 +111,7 @@ namespace InternetShopApp.plugins
 
         public Form GetForm(PluginsConventionElement element)
         {
-            FormOrder formProduct = new FormOrder(orderStorage, orderStatusStorage);
+            FormOrder formProduct = Program.Container.Resolve<FormOrder>();
             if (element != null)
             {
                 formProduct.Id = element.Id;
@@ -127,9 +121,10 @@ namespace InternetShopApp.plugins
 
         public void ReloadData()
         {
-            treeViewControl = new TreeViewControl(new List<string> { "OrderStatus", "OrderSum", "Id", "CustomerFIO" });
             var data = orderLogic.Read(null);
+            treeViewControl.GetCollection().Clear();
             treeViewControl.RecursiveFill(data);
+            treeViewControl.Refresh();
         }
     }
 }

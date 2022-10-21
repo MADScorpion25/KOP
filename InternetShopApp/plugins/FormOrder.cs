@@ -1,5 +1,6 @@
 ﻿using InternetShopBusinessLogic.BusinessLogic;
 using InternetShopContracts.BindingModels;
+using InternetShopContracts.BusinessLogicsContracts;
 using InternetShopContracts.ViewModels;
 using InternetShopDatabaseImplement.implements;
 using System;
@@ -18,15 +19,15 @@ namespace InternetShopApp.plugins
     {
         public int Id { set { id = value; } }
         private int? id;
-        private OrderLogic orderLogic;
-        private OrderStatusLogic orderStatusLogic;
+        private readonly IOrderLogic orderLogic;
+        private readonly IOrderStatusLogic orderStatusLogic;
         private bool DataChanged;
-        public FormOrder(OrderStorage orderStorage, OrderStatusStorage orderStatusStorage)
+        public FormOrder(IOrderLogic orderLogic, IOrderStatusLogic orderStatusLogic)
         {
             InitializeComponent();
+            this.orderLogic = orderLogic;
+            this.orderStatusLogic = orderStatusLogic;
             DataChanged = false;
-            orderLogic = new OrderLogic(orderStorage);
-            orderStatusLogic = new OrderStatusLogic(orderStatusStorage);
             var data = orderStatusLogic.Read(null);
             var list = data.Select(l => l.Status).ToList();
             userControlComboBox1.InsertData(list);
@@ -48,12 +49,26 @@ namespace InternetShopApp.plugins
                 try
                 {
                     var view = orderLogic.Read(new OrderBindingModel { Id = id })?[0];
+                    int? sum;
+                    if (view.OrderSum != "оплачен скидками")
+                    {
+                        sum = Convert.ToInt32(view.OrderSum);
+                    }
+
                     if (view != null)
                     {
                         textBox1.Text = view.CustomerFIO;
                         richTextBox1.Text = view.ProductDescription;
                         userControlComboBox1.SelectedValue = view.OrderStatus;
-                        numericTextBox1.Text = view.OrderSum != null ? view.OrderSum.ToString() : "";
+                        if (view.OrderSum != "оплачен скидками")
+                        {
+                            numericTextBox1.NumberValue = Convert.ToInt32(view.OrderSum);
+                        }
+                        else
+                        {
+                            numericTextBox1.NumberValue = null;
+                        }
+
                     }
                 }
                 catch (Exception ex)

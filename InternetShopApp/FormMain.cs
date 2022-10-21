@@ -1,8 +1,12 @@
 ﻿using InternetShopApp.plugins;
+using InternetShopContracts.BusinessLogicsContracts;
+using InternetShopDatabaseImplement.implements;
 using PluginsConventionLibrary.plugins;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Unity;
+
 
 namespace InternetShopApp
 {
@@ -10,10 +14,15 @@ namespace InternetShopApp
     {
         private readonly Dictionary<string, IPluginsConvention> _plugins;
         private string _selectedPlugin;
-        public FormMain()
+        private readonly IOrderLogic orderLogic;
+        private readonly IOrderStatusLogic orderStatusLogic;
+       
+        public FormMain(IOrderLogic orderLogic, IOrderStatusLogic orderStatusLogic)
         {
             InitializeComponent();
             _plugins = LoadPlugins();
+            this.orderLogic = orderLogic;
+            this.orderStatusLogic = orderStatusLogic;
         }
         private Dictionary<string, IPluginsConvention> LoadPlugins()
         {
@@ -23,7 +32,7 @@ namespace InternetShopApp
             // TODO При выборе пункта меню получать UserControl и заполнять элемент panelControl этим контролом на всю площадь
             // Пример: panelControl.Controls.Clear(); panelControl.Controls.Add(ctrl);
             var dic = new Dictionary<string, IPluginsConvention>();
-            var mainPlugin = new AppPluginConvension();
+            var mainPlugin = Program.Container.Resolve<AppPluginConvension>();
             dic.Add(mainPlugin.PluginName, mainPlugin);
 
             ToolStripItem[] toolStripItems = new ToolStripItem[2];
@@ -42,7 +51,7 @@ namespace InternetShopApp
         }
         private void MenuItemStatuses_Click(object sender, EventArgs e)
         {
-            FormOrderStatus formUnits = new FormOrderStatus();
+            FormOrderStatus formUnits = Program.Container.Resolve<FormOrderStatus>();
             formUnits.ShowDialog();
         }
 
@@ -51,7 +60,10 @@ namespace InternetShopApp
             _selectedPlugin = "Orders";
             panelControl.Controls.Clear();
             panelControl.Controls.Add(_plugins[_selectedPlugin].GetControl);
+            
             panelControl.Controls[0].Dock = DockStyle.Fill;
+            _plugins[_selectedPlugin].ReloadData();
+            _plugins[_selectedPlugin].GetControl.Refresh();
         }
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
@@ -86,16 +98,25 @@ namespace InternetShopApp
                     break;
             }
         }
+        public void FormMain_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip1.Show(this, new System.Drawing.Point(e.X, e.Y));
+            }
+        }
         private void AddNewElement()
         {
             var form = _plugins[_selectedPlugin].GetForm(null);
             if (form != null && form.ShowDialog() == DialogResult.OK)
             {
                 _plugins[_selectedPlugin].ReloadData();
+
             }
         }
         private void UpdateElement()
         {
+            var control = _plugins[_selectedPlugin].GetControl;
             var element = _plugins[_selectedPlugin].GetElement;
             if (element == null)
             {

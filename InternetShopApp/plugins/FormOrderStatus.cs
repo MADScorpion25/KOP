@@ -1,5 +1,6 @@
 ﻿using InternetShopBusinessLogic.BusinessLogic;
 using InternetShopContracts.BindingModels;
+using InternetShopContracts.BusinessLogicsContracts;
 using InternetShopContracts.ViewModels;
 using InternetShopDatabaseImplement.implements;
 using System;
@@ -10,12 +11,13 @@ namespace InternetShopApp.plugins
 {
     public partial class FormOrderStatus : Form
     {
-        private OrderStatusLogic orderStatusLogic;
+        private readonly IOrderStatusLogic orderStatusLogic;
         List<OrderStatusViewModel> data;
-        public FormOrderStatus()
+
+        public FormOrderStatus(IOrderStatusLogic orderStatusLogic)
         {
             InitializeComponent();
-            orderStatusLogic = new OrderStatusLogic(new OrderStatusStorage());
+            this.orderStatusLogic = orderStatusLogic;
         }
         private void LoadData()
         {

@@ -11,6 +11,7 @@ namespace InternetShopApp.plugins
     {
         public string CustomerFIO { get; set; }
         public string ProductDescription { get; set; }
-        public int? OrderSum { get; set; }
+        public string OrderStatus { get; set; }
+        public string OrderSum { get; set; }
     }
 }

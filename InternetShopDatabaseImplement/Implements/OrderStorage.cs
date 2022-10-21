@@ -32,11 +32,13 @@ namespace InternetShopDatabaseImplement.implements
             {
                 return null;
             }
-            var context = new InternetShopDatabase();
-            var order = context.Orders
-                .ToList()
-                .FirstOrDefault(rec => rec.Id == model.Id);
-            return order != null ? CreateModel(order) : null;
+            using (var context = new InternetShopDatabase())
+            {
+                var order = context.Orders
+                    .ToList()
+                    .FirstOrDefault(rec => rec.Id == model.Id);
+                return order != null ? CreateModel(order) : null;
+            }
         }
 
         public List<OrderViewModel> GetFilteredList(OrderBindingModel model)
@@ -51,11 +53,13 @@ namespace InternetShopDatabaseImplement.implements
 
         public List<OrderViewModel> GetFullList()
         {
-            var context = new InternetShopDatabase();
-            return context.Orders
+            using (var context = new InternetShopDatabase())
+            {
+                return context.Orders
                 .ToList()
                 .Select(CreateModel)
                 .ToList();
+            }
         }
 
         public void Insert(OrderBindingModel model)

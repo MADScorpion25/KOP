@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.userControlComboBox1 = new VisualComponents.UserControlComboBox();
-            this.numericTextBox1 = new VisualControlsChashin.NumericTextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,24 +36,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.numericTextBox1 = new VisualControlsChashin.NumericTextBox();
+            this.userControlComboBox1 = new VisualComponents.UserControlComboBox();
             this.SuspendLayout();
-            // 
-            // userControlComboBox1
-            // 
-            this.userControlComboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.userControlComboBox1.Location = new System.Drawing.Point(34, 265);
-            this.userControlComboBox1.Name = "userControlComboBox1";
-            this.userControlComboBox1.SelectedValue = "";
-            this.userControlComboBox1.Size = new System.Drawing.Size(226, 27);
-            this.userControlComboBox1.TabIndex = 0;
-            // 
-            // numericTextBox1
-            // 
-            this.numericTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.numericTextBox1.Location = new System.Drawing.Point(58, 214);
-            this.numericTextBox1.Name = "numericTextBox1";
-            this.numericTextBox1.Size = new System.Drawing.Size(171, 34);
-            this.numericTextBox1.TabIndex = 1;
             // 
             // textBox1
             // 
@@ -135,6 +118,23 @@
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // numericTextBox1
+            // 
+            this.numericTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericTextBox1.Location = new System.Drawing.Point(34, 214);
+            this.numericTextBox1.Name = "numericTextBox1";
+            this.numericTextBox1.Size = new System.Drawing.Size(226, 34);
+            this.numericTextBox1.TabIndex = 1;
+            // 
+            // userControlComboBox1
+            // 
+            this.userControlComboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlComboBox1.Location = new System.Drawing.Point(34, 265);
+            this.userControlComboBox1.Name = "userControlComboBox1";
+            this.userControlComboBox1.SelectedValue = "";
+            this.userControlComboBox1.Size = new System.Drawing.Size(226, 27);
+            this.userControlComboBox1.TabIndex = 0;
             // 
             // FormOrder
             // 
