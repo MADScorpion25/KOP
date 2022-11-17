@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using InternetShopContracts.BindingModels;
 using UnvisualComponents;
-using NonVisualCompAddition;
 using InternetShopContracts.BusinessLogicsContracts;
-using Unity;
 using ControlLibrary;
+using NonVisualComponentLibriary;
+using _2nd_lab_kop;
+using InternetShopBusinessLogic.BusinessLogic;
+using InternetShopDatabaseImplement.implements;
 using System.ComponentModel.Composition;
 
-namespace InternetShopApp.plugins
+namespace PluginsShareProject.plugins
 {
     [Export(typeof(IPluginsConvention))]
     public class AppPluginConvension : IPluginsConvention
@@ -113,7 +115,7 @@ namespace InternetShopApp.plugins
 
         public Form GetForm(PluginsConventionElement element)
         {
-            FormOrder formProduct = Program.Container.Resolve<FormOrder>();
+            FormOrder formProduct = new FormOrder(new OrderLogic(new OrderStorage()), new OrderStatusLogic(new OrderStatusStorage()));
             if (element != null)
             {
                 formProduct.Id = element.Id;
