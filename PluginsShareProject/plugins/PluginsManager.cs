@@ -1,4 +1,5 @@
-﻿using PluginsConventionLibrary.plugins;
+﻿
+using PluginsConventionLibrary.plugins;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
@@ -12,7 +13,7 @@ namespace PluginsShareProject.plugins
 {
     public class PluginsManager
     {
-        [Import(typeof(IPluginsConvention))]
+        [ImportMany(typeof(IPluginsConvention))]
         IEnumerable<IPluginsConvention> pluginsConventions { get; set; }
 
         public readonly Dictionary<string, IPluginsConvention> dictionary = new Dictionary<string, IPluginsConvention>();

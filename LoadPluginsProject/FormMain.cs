@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
+using InternetShopBusinessLogic.BusinessLogic;
+using InternetShopDatabaseImplement.implements;
 using PluginsConventionLibrary.plugins;
 using PluginsShareProject.plugins;
 
@@ -10,7 +13,8 @@ namespace LoadPluginsProject
     {
         private readonly Dictionary<string, IPluginsConvention> _plugins;
         private string _selectedPlugin;
-       
+        private ToolStripItem[] toolStripItems;
+
         public FormMain()
         {
             InitializeComponent();
@@ -28,36 +32,82 @@ namespace LoadPluginsProject
             PluginsManager plManager = new PluginsManager();
             dic = plManager.dictionary;
 
-            ToolStripItem[] toolStripItems = new ToolStripItem[2];
-            ToolStripMenuItem menuItemProducts = new ToolStripMenuItem();
-            menuItemProducts.Text = "Orders";
-            menuItemProducts.Click += MenuItemOrders_Click;
-            toolStripItems[0] = menuItemProducts;
-
-            ToolStripMenuItem menuItemUnits = new ToolStripMenuItem();
-            menuItemUnits.Text = "Статусы";
-            menuItemUnits.Click += MenuItemStatuses_Click;
-            toolStripItems[1] = menuItemUnits;
+            toolStripItems = new ToolStripItem[dic.Count];
+           
+            dic.Keys.ToList().ForEach(pl =>
+            {
+                ToolStripMenuItem menuItemOrders = new ToolStripMenuItem();
+                menuItemOrders.Text = dic[pl].PluginName;
+                menuItemOrders.Click += MenuItemOrders_Click;
+                toolStripItems[0] = menuItemOrders;
+            });
 
             ControlsStripMenuItem.DropDownItems.AddRange(toolStripItems);
-            return dic;
-        }
-        private void MenuItemStatuses_Click(object sender, EventArgs e)
-        {
-            FormOrderStatus formUnits;
 
+            return dic;
         }
 
         private void MenuItemOrders_Click(object sender, EventArgs e)
         {
-            _selectedPlugin = "Orders";
+            _selectedPlugin = ((ToolStripMenuItem)sender).Text;
             panelControl.Controls.Clear();
             panelControl.Controls.Add(_plugins[_selectedPlugin].GetControl);
-            
+
             panelControl.Controls[0].Dock = DockStyle.Fill;
             _plugins[_selectedPlugin].ReloadData();
             _plugins[_selectedPlugin].GetControl.Refresh();
         }
+
+        private void AddNewElement()
+        {
+            var form = _plugins[_selectedPlugin].GetForm(null);
+            if (form != null && form.ShowDialog() == DialogResult.OK)
+            {
+                _plugins[_selectedPlugin].ReloadData();
+            }
+        }
+
+        private void UpdateElement()
+        {
+            var control = _plugins[_selectedPlugin].GetControl;
+            var element = _plugins[_selectedPlugin].GetElement;
+            if (element == null)
+            {
+                MessageBox.Show("Нет выбранного элемента", "Ошибка",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var form = _plugins[_selectedPlugin].GetForm(element);
+            if (form != null && form.ShowDialog() == DialogResult.OK)
+            {
+                _plugins[_selectedPlugin].ReloadData();
+            }
+        }
+        private void DeleteElement()
+        {
+            if (MessageBox.Show("Удалить выбранный элемент", "Удаление",
+           MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+            {
+                return;
+            }
+            var element = _plugins[_selectedPlugin].GetElement;
+            if (element == null)
+            {
+                MessageBox.Show("Нет выбранного элемента", "Ошибка",
+               MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (_plugins[_selectedPlugin].DeleteElement(element))
+            {
+                _plugins[_selectedPlugin].ReloadData();
+            }
+        }
+        private void MenuItemStatuses_Click(object sender, EventArgs e)
+        {
+            FormOrderStatus formUnits = new FormOrderStatus(new OrderStatusLogic(new OrderStatusStorage()));
+            formUnits.ShowDialog();
+        }
+
         private void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
             if (string.IsNullOrEmpty(_selectedPlugin) ||
@@ -98,50 +148,8 @@ namespace LoadPluginsProject
                 contextMenuStrip1.Show(this, new System.Drawing.Point(e.X, e.Y));
             }
         }
-        private void AddNewElement()
-        {
-            var form = _plugins[_selectedPlugin].GetForm(null);
-            if (form != null && form.ShowDialog() == DialogResult.OK)
-            {
-                _plugins[_selectedPlugin].ReloadData();
-
-            }
-        }
-        private void UpdateElement()
-        {
-            var control = _plugins[_selectedPlugin].GetControl;
-            var element = _plugins[_selectedPlugin].GetElement;
-            if (element == null)
-            {
-                MessageBox.Show("Нет выбранного элемента", "Ошибка",
-               MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            var form = _plugins[_selectedPlugin].GetForm(element);
-            if (form != null && form.ShowDialog() == DialogResult.OK)
-            {
-                _plugins[_selectedPlugin].ReloadData();
-            }
-        }
-        private void DeleteElement()
-        {
-            if (MessageBox.Show("Удалить выбранный элемент", "Удаление",
-           MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
-            {
-                return;
-            }
-            var element = _plugins[_selectedPlugin].GetElement;
-            if (element == null)
-            {
-                MessageBox.Show("Нет выбранного элемента", "Ошибка",
-               MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (_plugins[_selectedPlugin].DeleteElement(element))
-            {
-                _plugins[_selectedPlugin].ReloadData();
-            }
-        }
+     
+       
         private void CreateSimpleDoc()
         {
             using (var dialog = new SaveFileDialog { Filter = "docx|*.docx" })

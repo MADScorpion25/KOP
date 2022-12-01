@@ -34,6 +34,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="InternetShopBusinessLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\InternetShopBusinessLogic\bin\Debug\InternetShopBusinessLogic.dll</HintPath>
+    </Reference>
+    <Reference Include="InternetShopContracts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\InternetShopContracts\bin\Debug\InternetShopContracts.dll</HintPath>
+    </Reference>
+    <Reference Include="InternetShopDatabaseImplement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\InternetShopDatabaseImplement\bin\Debug\InternetShopDatabaseImplement.dll</HintPath>
+    </Reference>
     <Reference Include="PluginsConventionLibrary">
       <HintPath>..\PluginsConventionLibrary\bin\Debug\PluginsConventionLibrary.dll</HintPath>
     </Reference>
